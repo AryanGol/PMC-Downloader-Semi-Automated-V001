@@ -1,5 +1,9 @@
 # PMC-Downloader-Semi-Automated-V001
 
+This README describes a semi-automated workflow for downloading full-text PDFs from PubMed Central (PMC) based on a list of PMIDs. The script retrieves metadata (publication year, journal name) for each PMID, checks whether a free full-text PDF is available on PMC, and organizes the downloaded PDFs into a structured folder hierarchy (`allFiles/<year>/<journal>`). Finally, it bundles everything into a single ZIP file.
+
+Below, you’ll find instructions on setting up your environment, running the script, and understanding the outputs.
+
 ## How to Use
 
 1. **Visit PubMed**  
