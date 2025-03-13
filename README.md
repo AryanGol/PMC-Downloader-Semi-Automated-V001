@@ -58,8 +58,8 @@ import time
 import re
 from collections import defaultdict
 import zipfile
-
-**Extract PMIDs**
+```
+**Import Libraries**
 
 ```python
 import re
@@ -87,7 +87,7 @@ def extract_pmids(nbib_file, output_file):
 
 # Example usage
 extract_pmids("Mutation Rate AND Escherichia coli.nbib", "pmids.txt")
-
+```
 
 
 
