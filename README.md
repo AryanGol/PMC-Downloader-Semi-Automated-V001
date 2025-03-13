@@ -1,5 +1,5 @@
 # PMC-Downloader-Semi-Automated-V001
-
+> **Note:** This code has been written for Google Colab, so you might need to make some adjustments to use it on your own device.
 This README describes a semi-automated workflow for downloading full-text PDFs from PubMed Central (PMC) based on a list of PMIDs. The script retrieves metadata (publication year, journal name) for each PMID, checks whether a free full-text PDF is available on PMC, and organizes the downloaded PDFs into a structured folder hierarchy (`allFiles/<year>/<journal>`). Finally, it bundles everything into a single ZIP file. Moreover, you will have a .txt file that contains all PMIDs for which no paper is available on PMC, allowing for further analysis.
 
 Below, you’ll find instructions on setting up your environment, running the script, and understanding the outputs.
@@ -49,7 +49,6 @@ If you prefer a more manual approach, follow the steps below:
 **Then you will have your .nbib file**
 
 ## Part 2: Use python to download Articles - Automatically
-> **Note:** This code has been written for Google Colab, so you might need to make some adjustments to use it on your own device.
 ## Extract PMIDs from an `.nbib` File
 
 The following function reads an `.nbib` file (exported from PubMed), extracts PMIDs, and writes them to a plain-text file, one PMID per line.
