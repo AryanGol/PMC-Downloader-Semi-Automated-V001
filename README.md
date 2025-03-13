@@ -48,6 +48,19 @@ If you prefer a more manual approach, follow the steps below:
 
 The following function reads an `.nbib` file (exported from PubMed), extracts PMIDs, and writes them to a plain-text file, one PMID per line.
 
+**Import Libraries**
+```python
+from Bio import Entrez
+from bs4 import BeautifulSoup
+import requests
+import os
+import time
+import re
+from collections import defaultdict
+import zipfile
+
+**Extract PMIDs**
+
 ```python
 import re
 
