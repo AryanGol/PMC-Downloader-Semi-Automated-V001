@@ -32,8 +32,12 @@ If you prefer a more manual approach, follow the steps below:
 
 **Step 3**
 ![3](https://github.com/user-attachments/assets/26a59872-711c-4868-bdc1-70597ff75dd3)
-Step 4
+
+4. **Download .nbib File**  
+
+**Step 1**
 ![4](https://github.com/user-attachments/assets/bc9c042a-cdf4-4e83-8c97-413287ea6291)
-Step 5
+
+**Step 2**
 ![5](https://github.com/user-attachments/assets/c4ff0e58-65c2-495e-b8c8-5949b6b4b35f)
 Then you will have your .nbib file
