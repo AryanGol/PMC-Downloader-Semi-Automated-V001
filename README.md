@@ -41,4 +41,8 @@ If you prefer a more manual approach, follow the steps below:
 **Step 2**
 ![5](https://github.com/user-attachments/assets/c4ff0e58-65c2-495e-b8c8-5949b6b4b35f)
 
-#**Then you will have your .nbib file**
+**Then you will have your .nbib file**
+
+
+
+
