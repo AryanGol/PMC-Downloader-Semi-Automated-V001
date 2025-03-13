@@ -88,5 +88,138 @@ def extract_pmids(nbib_file, output_file):
 extract_pmids("Mutation Rate AND Escherichia coli.nbib", "pmids.txt")
 ```
 
+```python
+# Set your email (required by NCBI)
+Entrez.email = "Your Email Address"
+
+# Function to retrieve metadata for a given PMID (year and journal name)
+def get_metadata(pmid):
+    """Retrieve metadata (year and journal name) for a given PMID."""
+    try:
+        handle = Entrez.esummary(db="pubmed", id=pmid)
+        record = Entrez.read(handle)
+        handle.close()
+
+        # Extract year and journal name from the record
+        # Note: sometimes PubDate can be in various formats. We take the first token.
+        pub_date = record[0].get("PubDate", "")
+        year = pub_date.split()[0] if pub_date else None
+
+        # Journal name may be under FullJournalName, if available.
+        journal = record[0].get("FullJournalName", None)
+
+        return year, journal
+    except Exception as e:
+        print(f"Error retrieving metadata for PMID {pmid}: {e}")
+        return None, None
+
+# Function to retrieve full-text link from PMC
+def get_full_text_links(pmid):
+    """Retrieve full-text link if available in PubMed Central (PMC)."""
+    try:
+        handle = Entrez.elink(dbfrom="pubmed", id=pmid, linkname="pubmed_pmc")
+        record = Entrez.read(handle)
+        handle.close()
+
+        if record[0]["LinkSetDb"]:
+            pmc_id = record[0]["LinkSetDb"][0]["Link"][0]["Id"]
+            full_text_url = f"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC{pmc_id}/pdf/"
+            return full_text_url
+        else:
+            return None
+    except Exception as e:
+        print(f"Error retrieving full-text link for PMID {pmid}: {e}")
+        return None
+
+# Function to download the full-text PDF
+def download_full_text(url, pmid, folder):
+    """Download the full-text PDF from the given URL."""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+    try:
+        response = requests.get(url, stream=True, headers=headers)
+        if response.status_code == 200:
+            # Ensure folder exists
+            os.makedirs(folder, exist_ok=True)
+            file_name = os.path.join(folder, f"PMC_{pmid}.pdf")
+            with open(file_name, 'wb') as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+            print(f"Downloaded: {file_name}")
+        else:
+            print(f"Failed to download full text for PMID {pmid}. HTTP Status: {response.status_code}")
+    except Exception as e:
+        print(f"Error downloading full text for PMID {pmid}: {e}")
+
+    time.sleep(1)  # Delay between requests
+
+# Function to zip the files into the final structure
+def zip_folders():
+    """Zip the top-level folder containing all the year and journal subfolders."""
+    folder_name = "allFiles"
+    zip_filename = f"{folder_name}.zip"
+    with zipfile.ZipFile(zip_filename, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(folder_name):
+            for file in files:
+                # write file into zip with relative path
+                zipf.write(os.path.join(root, file), os.path.relpath(os.path.join(root, file), folder_name))
+    print(f"Zipped all files into {zip_filename}")
+
+# Main function to process PMIDs
+def main():
+    # Read PMIDs from the file
+    with open('pmids.txt', 'r') as file:
+        pmids = [line.strip() for line in file.readlines() if line.strip()]
+
+    # Dictionary to hold files organized by year and journal (optional use)
+    year_journal_dict = defaultdict(lambda: defaultdict(list))
+    # List to hold PMIDs with no free full text access
+    no_full_text_pmids = []
+
+    # Process each PMID
+    for pmid in pmids:
+        print(f"Checking metadata and full text for PMID: {pmid}")
+
+        # Retrieve metadata (year and journal name)
+        year, journal = get_metadata(pmid)
+        # If metadata is missing, assign "Unknown"
+        if not year or not journal:
+            folder = os.path.join("allFiles", "Unknown")
+            print(f"Metadata missing for PMID {pmid}. Using folder 'Unknown'.")
+        else:
+            folder = os.path.join("allFiles", year, journal)
+
+        # Retrieve full-text link
+        full_text_url = get_full_text_links(pmid)
+        if full_text_url:
+            print(f"Full-text URL: {full_text_url}")
+            download_full_text(full_text_url, pmid, folder)
+            # (Optional) store pmid in dict
+            if year and journal:
+                year_journal_dict[year][journal].append(pmid)
+            else:
+                year_journal_dict["Unknown"]["Unknown"].append(pmid)
+        else:
+            print(f"No free full-text available for PMID {pmid}.")
+            no_full_text_pmids.append(pmid)
+
+        print('-' * 80)
+
+    # Write the PMIDs with no free full-text access to a txt file
+    if no_full_text_pmids:
+        with open('no_full_access.txt', 'w') as file:
+            for pmid in no_full_text_pmids:
+                file.write(f"{pmid}\n")
+        print(f"PMIDs with no free full-text access have been saved to 'no_full_access.txt'")
+    else:
+        print("All articles have free full-text access.")
+
+    # Zip the folder structure
+    zip_folders()
+
+if __name__ == "__main__":
+    main()
 
 
