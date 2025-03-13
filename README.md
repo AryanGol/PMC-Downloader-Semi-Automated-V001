@@ -43,6 +43,7 @@ If you prefer a more manual approach, follow the steps below:
 
 **Then you will have your .nbib file**
 
+
 ## Extract PMIDs from an `.nbib` File
 
 The following function reads an `.nbib` file (exported from PubMed), extracts PMIDs, and writes them to a plain-text file, one PMID per line.
