@@ -5,7 +5,7 @@ Decide which expression (keywords or phrases) you want in the title or abstract.
 Step 1
 ![1](https://github.com/user-attachments/assets/8f29629c-722d-4a67-984a-93c0549c1eb0)
 Step 2
-![2](https://github.com/user-attachments/assets/9600f357-da6c-4214-a694-a1c39daf3c5f)
+![Screenshot 2025-03-13 101058](https://github.com/user-attachments/assets/6c3660d3-2655-4321-b422-47d9b34fcba0)
 Step 3
 ![3](https://github.com/user-attachments/assets/26a59872-711c-4868-bdc1-70597ff75dd3)
 Step 4
