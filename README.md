@@ -67,7 +67,7 @@ from collections import defaultdict
 import zipfile
 ```
 **Extract PMIDs**
-
+> **Note:** Here you have to change the name of the `.nbib` file (in the last line) to your own file name.
 ```python
 
 def extract_pmids(nbib_file, output_file):
