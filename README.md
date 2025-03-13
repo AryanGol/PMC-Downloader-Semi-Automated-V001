@@ -1,7 +1,26 @@
 # PMC-Downloader-Semi-Automated-V001
-Go to https://pubmed.ncbi.nlm.nih.gov/.
-Decide which expression (keywords or phrases) you want in the title or abstract.
-(("Escherichia coli"[Title/Abstract]) OR (("Here you can add other synonyms of Escherichia coli with OR"[Title/Abstract]) OR (...[Title/Abstract])) AND ((("Mutation Rate"[Title/Abstract]) OR (("Here you can add other synonyms of Mutation Rate with OR"[Title/Abstract]) OR (...[Title/Abstract])))
+
+## How to Use
+
+1. **Visit PubMed**  
+   Go to [https://pubmed.ncbi.nlm.nih.gov/](https://pubmed.ncbi.nlm.nih.gov/) to begin your search.
+
+2. **Formulate Your Search Query**  
+   Decide which expressions (keywords or phrases) you want to appear in the article’s title or abstract. For example:
+
+   ```text
+   (
+     ("Escherichia coli"[Title/Abstract]) 
+     OR ("Here you can add other synonyms of Escherichia coli"[Title/Abstract])
+     OR (...[Title/Abstract])
+   )
+   AND
+   (
+     ("Mutation Rate"[Title/Abstract])
+     OR ("Here you can add other synonyms of Mutation Rate"[Title/Abstract])
+     OR (...[Title/Abstract])
+   )
+
 Step 1
 ![1](https://github.com/user-attachments/assets/8f29629c-722d-4a67-984a-93c0549c1eb0)
 Step 2
