@@ -43,7 +43,7 @@ If you prefer a more manual approach, follow the steps below:
 ![4](https://github.com/user-attachments/assets/bc9c042a-cdf4-4e83-8c97-413287ea6291)
 
 **Step 2**
-![5](https://github.com/user-attachments/assets/c4ff0e58-65c2-495e-b8c8-5949b6b4b35f)
+![323232](https://github.com/user-attachments/assets/0f35682c-9b90-4415-ad89-70e42104e1fb)
 
 **Then you will have your .nbib file**
 
