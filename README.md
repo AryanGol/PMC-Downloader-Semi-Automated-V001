@@ -59,10 +59,9 @@ import re
 from collections import defaultdict
 import zipfile
 ```
-**Import Libraries**
+**Extract PMIDs**
 
 ```python
-import re
 
 def extract_pmids(nbib_file, output_file):
     """
