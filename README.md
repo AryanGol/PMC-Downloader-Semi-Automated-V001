@@ -21,7 +21,8 @@
      OR (...[Title/Abstract])
    )
 
-   **Or You Can Do It Manually** 
+3. **(Optional) Manual Steps**
+If you prefer a more manual approach, follow the steps below:
 Step 1
 ![1](https://github.com/user-attachments/assets/8f29629c-722d-4a67-984a-93c0549c1eb0)
 Step 2
