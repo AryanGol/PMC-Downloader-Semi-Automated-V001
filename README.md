@@ -87,7 +87,7 @@ def extract_pmids(nbib_file, output_file):
 # Example usage
 extract_pmids("Mutation Rate AND Escherichia coli.nbib", "pmids.txt")
 ```
-
+## Download All Available Papers as a .zip File and Categorize them Based on Publication Year and Journal
 ```python
 # Set your email (required by NCBI)
 Entrez.email = "Your Email Address"
