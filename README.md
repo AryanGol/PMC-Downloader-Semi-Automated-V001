@@ -43,6 +43,30 @@ If you prefer a more manual approach, follow the steps below:
 
 **Then you will have your .nbib file**
 
+'''text
+def extract_pmids(nbib_file, output_file):
+    """
+    Extracts PMIDs from an .nbib file and saves them to a .txt file.
+
+    Args:
+        nbib_file (str): Path to the .nbib file.
+        output_file (str): Path to save the extracted PMIDs.
+    """
+    with open(nbib_file, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # Use regex to find all PMIDs (they are usually formatted as "PMID- xxxxxxxx")
+    pmids = re.findall(r"PMID-\s*(\d+)", content)
+
+    # Save to a text file
+    with open(output_file, "w") as f:
+        for pmid in pmids:
+            f.write(pmid + "\n")
+
+    print(f"Extracted {len(pmids)} PMIDs and saved to {output_file}")
+
+# Example usage
+extract_pmids("Mutation Rate AND Escherichia coli.nbib", "pmids.txt")
 
 
 
