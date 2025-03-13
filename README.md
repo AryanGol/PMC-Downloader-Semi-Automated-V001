@@ -43,7 +43,13 @@ If you prefer a more manual approach, follow the steps below:
 
 **Then you will have your .nbib file**
 
-'''text
+## Extract PMIDs from an `.nbib` File
+
+The following function reads an `.nbib` file (exported from PubMed), extracts PMIDs, and writes them to a plain-text file, one PMID per line.
+
+```python
+import re
+
 def extract_pmids(nbib_file, output_file):
     """
     Extracts PMIDs from an .nbib file and saves them to a .txt file.
@@ -67,6 +73,7 @@ def extract_pmids(nbib_file, output_file):
 
 # Example usage
 extract_pmids("Mutation Rate AND Escherichia coli.nbib", "pmids.txt")
+
 
 
 
