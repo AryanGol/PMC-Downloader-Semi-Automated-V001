@@ -5,7 +5,7 @@ This README describes a semi-automated workflow for downloading full-text PDFs f
 Below, you’ll find instructions on setting up your environment, running the script, and understanding the outputs.
 
 ## How to Use
-## Part 1: Use PubMed to Find Related Articles 
+## Part 1: Use PubMed to Find Related Articles - Manually
 
 1. **Visit PubMed**  
    Go to [https://pubmed.ncbi.nlm.nih.gov/](https://pubmed.ncbi.nlm.nih.gov/) to begin your search.
@@ -48,7 +48,7 @@ If you prefer a more manual approach, follow the steps below:
 
 **Then you will have your .nbib file**
 
-## Part 2: Use python to download Articles
+## Part 2: Use python to download Articles - Automatically
 > **Note:** This code has been written for Google Colab, so you might need to make some adjustments to use it on your own device.
 ## Extract PMIDs from an `.nbib` File
 
